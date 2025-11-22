@@ -11,7 +11,7 @@
       <DigimonFilter :levels="levels" @filter="onFilter" />
       <DigimonList :digimons="filteredDigimons" />
     </template>
-    <!-- La función logout solo debe estar en el script, no en el template -->
+    <!-- El botón ya llama a logout correctamente -->
   </q-page>
 </template>
 
@@ -74,5 +74,14 @@ function onLoginSuccess(token) {
   isLogged.value = true
   userToken.value = token
   fetchDigimons()
+}
+
+function logout() {
+  isLogged.value = false
+  userToken.value = ''
+  digimons.value = []
+  filteredDigimons.value = []
+  levels.value = []
+  errorMsg.value = ''
 }
 </script>
